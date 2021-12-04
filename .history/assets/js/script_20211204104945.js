@@ -54,7 +54,6 @@ var onSave = function(event){
     }
   
 }
-//used jquery to save the onclick here instead of for each in the html
 $(".saveBtn").click(onSave)
 //we are going to create a timeblock array and go through it to check if local storage has anything for that timeblock
 //
