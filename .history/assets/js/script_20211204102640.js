@@ -63,19 +63,6 @@ var eventArray = [9,10,11,12,13,14,15,16,17,18]
 //according to stack overflow, it can be a for in loop or a for of loop 
 //and object.keys creates an array to use in a for of loop
 for(var key of eventArray){
-    //so this for loop will loop through each item in the array and then going
-    //into local storage and getting the number/ eventtext, if there is text in local storage that will be what is 
-    //saved
-    //the backticks make it dynamic and the key is grabbing the key from what was saved 
-    var eventText=localStorage.getItem(`${key}`)
-    //here we are getting our eventText because we named our textarea id btn# which at leastwas consistent
-    //and so we are using btn${key} to get the btn# to know what to save
-    //need hash in front of btn because its an id
-    if(eventText){
-        //I freakin hate this. .value is descriptive and easy to use 
-        //.val means nothing to me
-        $(`#btn${key}`).val(eventText)
-    }
-    
+    console.log(key)
 }
 //what

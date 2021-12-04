@@ -72,10 +72,8 @@ for(var key of eventArray){
     //and so we are using btn${key} to get the btn# to know what to save
     //need hash in front of btn because its an id
     if(eventText){
-        //I freakin hate this. .value is descriptive and easy to use 
-        //.val means nothing to me
         $(`#btn${key}`).val(eventText)
     }
-    
+    console.log(key)
 }
 //what

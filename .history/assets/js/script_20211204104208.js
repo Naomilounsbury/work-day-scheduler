@@ -76,6 +76,6 @@ for(var key of eventArray){
         //.val means nothing to me
         $(`#btn${key}`).val(eventText)
     }
-    
+    console.log(key)
 }
 //what

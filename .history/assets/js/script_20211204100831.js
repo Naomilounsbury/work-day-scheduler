@@ -54,28 +54,6 @@ var onSave = function(event){
     }
   
 }
-//we are going to create a timeblock array and go through it to check if local storage has anything for that timeblock
-//
-var eventArray = [9,10,11,12,13,14,15,16,17,18]
+var savedEvents = window.localStorage;
+console.log(savedEvents)
 
-
-//javascript has a special for loop for going through objects
-//according to stack overflow, it can be a for in loop or a for of loop 
-//and object.keys creates an array to use in a for of loop
-for(var key of eventArray){
-    //so this for loop will loop through each item in the array and then going
-    //into local storage and getting the number/ eventtext, if there is text in local storage that will be what is 
-    //saved
-    //the backticks make it dynamic and the key is grabbing the key from what was saved 
-    var eventText=localStorage.getItem(`${key}`)
-    //here we are getting our eventText because we named our textarea id btn# which at leastwas consistent
-    //and so we are using btn${key} to get the btn# to know what to save
-    //need hash in front of btn because its an id
-    if(eventText){
-        //I freakin hate this. .value is descriptive and easy to use 
-        //.val means nothing to me
-        $(`#btn${key}`).val(eventText)
-    }
-    
-}
-//what

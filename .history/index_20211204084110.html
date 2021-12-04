@@ -28,14 +28,13 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class>
+    <div class="container">
       <!-- Timeblocks go here -->
-      <table class = "container">
+      <table>
         <tr class="row ">
           <td class="hour col">9am</td>
           <td class="time-block col" id="9">
-            <!-- all of my textareas are called btn which is ironic because they arent btns -->
-            <textarea id="btn9">
+            <textarea id="btn9" type="text">
             
           </textarea>
           </td>
@@ -48,7 +47,7 @@
         <tr class="row">
           <td class="hour col">10am</td>
           <td class="time-block col" id="10">
-            <textarea id="btn10">
+            <textarea id = "btn10">
             </textarea>
           </td>
           <td col>
@@ -59,8 +58,8 @@
         </tr>
         <tr class="row">
           <td class="hour col">11am</td>
-          <td class="time-block col-6" id="11">
-            <textarea id="btn11">
+          <td class="time-block col" id="11">
+            <textarea>
             </textarea>
           </td>
           <td col>
@@ -71,8 +70,8 @@
         </tr>
         <tr class="row">
           <td class="hour col">12pm</td>
-          <td class="time-block col-6" id="12">
-            <textarea id="btn12">
+          <td class="time-block col" id="12">
+            <textarea>
             </textarea>
           </td>
           <td class="col">
@@ -84,7 +83,7 @@
         <tr class="row">
           <td class="hour col">1pm</td>
           <td class="time-block col" id="13">
-            <textarea id="btn13">
+            <textarea>
             </textarea>
           </td>
           <td class="col">
@@ -96,7 +95,7 @@
         <tr class="row">
           <td class="hour col">2pm</td>
           <td class="time-block col" id="14">
-            <textarea id="btn14">
+            <textarea>
             </textarea>
           </td>
           <td class="col">
@@ -108,7 +107,7 @@
         <tr class="row">
           <td class="hour col">3pm</td>
           <td class="time-block col" id="15">            
-          <textarea id="btn15">
+          <textarea>
           </textarea>
           </td>
           <td class="col">
@@ -120,7 +119,7 @@
         <tr class="row">
           <td class="hour col">4pm</td>
           <td class="time-block col" id="16">
-            <textarea id="btn16">
+            <textarea>
             </textarea>
           </td>
           <td class= "col">
@@ -132,7 +131,7 @@
         <tr class="row">
           <td class="hour col">5pm</td>
           <td class="time-block col" id="17">
-            <textarea id="btn17">
+            <textarea>
             </textarea>
           </td>
           <td class="col">
@@ -144,7 +143,7 @@
         <tr class="row">
           <td class="hour col">6pm</td>
           <td class="time-block col" id="18">
-            <textarea id="btn18">
+            <textarea>
             </textarea>
           </td>
           <td class="col">
@@ -155,8 +154,7 @@
         </tr>
       </table>
     </div>
-
-    <!-- I didnt actually use jquery -->
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/js/script.js"></script>
