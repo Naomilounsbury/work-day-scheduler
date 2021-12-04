@@ -51,6 +51,7 @@ var onSave = function (event) {
         var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
         //i'm doing a .trim because there is a lot of white space in the value
         localStorage.setItem(`${event.target.value}`, timeBlockEvent.trim())
+        saveIt(event.target.value, timeBlockEvent)
     }
    
 }

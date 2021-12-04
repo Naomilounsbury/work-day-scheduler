@@ -39,7 +39,6 @@ for (i = 0; i <= timeBlockEl.length - 1; i++) {
     timeBlockEl[i].className = timeBlockEl[i].className + " " + checkTime(timeBlockEl[i])
 }
 //we need a function to show us whats happening using the word on because it runs on an event
-
 var onSave = function (event) {
     //so I couldn't figure out why it wasn't pulling the value of the textarea
     //so we looked at w3schools and they said add a .value which honestly should have been intuitive
@@ -51,6 +50,7 @@ var onSave = function (event) {
         var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
         //i'm doing a .trim because there is a lot of white space in the value
         localStorage.setItem(`${event.target.value}`, timeBlockEvent.trim())
+        saveIt(event.target.value, timeBlockEvent)
     }
    
 }
@@ -80,5 +80,33 @@ for (var key of eventArray) {
     }
 
 }
+// this tries to grab the key events and turns it into a usable array 
+//if events isn't there then it creates an empty array. 
+var array = JSON.parse(localStorage.getItem("events")) || []
+//onSave
+function saveIt(time, description) {
+    // grab the target value back in timebloc
+    //if(document.querySelector(`#btn${event.target.value}`).value){
+    //actually grabs it
+    //var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
+    // naming the object
+    var object = {
+        hour: time,
+        event: description
+    }
+    for (var i = 0; i < array.length; i++) {
+        //createing an element to hold the array
+        var el = array[i]
+        //the hour element of the array is equal to the hour element of the object
+        //then the timeblock event is equal to the element event and updates it
+        if (el.hour === object.hour && i < array.length) {
+            el.event = timeBlockEvent
+        }
+        else if (el.hour !== object.hour && i === array.length - 1) {
+            array.push(object)
 
+        }
+    }
+    localStorage.setItem("events", JSON.stringify(array))
+}
 

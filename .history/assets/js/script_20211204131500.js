@@ -11,26 +11,26 @@ currentDayEl.innerText = displayDate
 //weirdly I didnt have a var in front of this elemnet and it still worked
 var timeBlockEl = document.querySelectorAll(".time-block");
 //made a function called checkTime to check the current time to compare with the time on the scheduler
-var checkTime = function (currentEl) {
+var checkTime = function(currentEl){
     //will maybe hit a block because will use 24 hours as ids but if the current time that I chose from moment is 12 hours they wont match up
     var timeBlock = moment().hour(parseInt(currentEl.id))
     console.log(timeBlock)
     //if the block hour id is less than the current time hour we return the class name past
-    if (timeBlock.hour() < currentTime.hour()) {
+    if (timeBlock.hour() < currentTime.hour()){
         return "past"
     }
-    if (timeBlock.hour() > currentTime.hour()) {
+    if (timeBlock.hour() > currentTime.hour()){
         return "future"
     }
-    if (timeBlock.hour() === currentTime.hour()) {
+    if (timeBlock.hour()=== currentTime.hour()){
         return "present"
     }
-
+    
     //if element is in the past return past
     //if element is in the future return future
     //if element is in the present return present
 }
-for (i = 0; i <= timeBlockEl.length - 1; i++) {
+for(i=0; i<=timeBlockEl.length-1; i++){
     //timeblock elements already have the class timeblock. If we just replaced the class with future or present
     //it would erase the class, so we want to add to the class
     //check time returns the new class
@@ -39,46 +39,75 @@ for (i = 0; i <= timeBlockEl.length - 1; i++) {
     timeBlockEl[i].className = timeBlockEl[i].className + " " + checkTime(timeBlockEl[i])
 }
 //we need a function to show us whats happening using the word on because it runs on an event
-
-var onSave = function (event) {
+var onSave = function(event){
     //so I couldn't figure out why it wasn't pulling the value of the textarea
     //so we looked at w3schools and they said add a .value which honestly should have been intuitive
     //we are using backticks here hecause we want to dynamically change the id and if they click on 10, we want the id to reflect number 10
     //inside the ${} is code that will later be evaulated to a string depending on the button clicked
-    if (document.querySelector(`#btn${event.target.value}`).value) {
+    if(document.querySelector(`#btn${event.target.value}`).value){
         //originally put event.target.id but then we realized we didn't have a id on the freaken button but
         //what we did have was a value so we did .value
         var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
         //i'm doing a .trim because there is a lot of white space in the value
         localStorage.setItem(`${event.target.value}`, timeBlockEvent.trim())
+        
     }
-   
+    saveIt(event)
 }
 //used jquery to save the onclick here instead of for each in the html
 $(".saveBtn").click(onSave)
 //we are going to create a timeblock array and go through it to check if local storage has anything for that timeblock
 //
-var eventArray = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+var eventArray = [9,10,11,12,13,14,15,16,17,18]
 
 
 //javascript has a special for loop for going through objects
 //according to stack overflow, it can be a for in loop or a for of loop 
 //and object.keys creates an array to use in a for of loop
-for (var key of eventArray) {
+for(var key of eventArray){
     //so this for loop will loop through each item in the array and then going
     //into local storage and getting the number/ eventtext, if there is text in local storage that will be what is 
     //saved
     //the backticks make it dynamic and the key is grabbing the key from what was saved 
-    var eventText = localStorage.getItem(`${key}`)
+    var eventText=localStorage.getItem(`${key}`)
     //here we are getting our eventText because we named our textarea id btn# which at leastwas consistent
     //and so we are using btn${key} to get the btn# to know what to save
     //need hash in front of btn because its an id
-    if (eventText) {
+    if(eventText){
         //I freakin hate this. .value is descriptive and easy to use 
         //.val means nothing to me
         $(`#btn${key}`).val(eventText)
     }
+    
+}
+// this tries to grab the key events and turns it into a usable array 
+//if events isn't there then it creates an empty array. 
+var array = JSON.parse(localStorage.getItem("events")) || []
+//onSave
+function saveIt(event){
+    // grab the target value back in timebloc
+    if(document.querySelector(`#btn${event.target.value}`).value){
+    //actually grabs it
+        var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
+        // naming the object
+        var object = {
+            hour:event.target.value,
+            event:timeBlockEvent
+        }
+        for(var i=0;i<array.length;i++){
+            //createing an element to hold the array
+            var el = array[i]
+            //the hour element of the array is equal to the hour element of the object
+            //then the timeblock event is equal to the element event and updates it
+            if (el.hour===object.hour && i<array.length){
+                el.event=timeBlockEvent
+            }
+            else if(el.hour!==object.hour && i===array.length-1){
+                array.push(object)
+                
+            }
+        }
+        localStorage.setItem("events",JSON.stringify(array))
+    }
 
 }
-
-
