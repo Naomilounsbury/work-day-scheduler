@@ -42,19 +42,8 @@ console.log(checkTime(timeBlockEl[i]))
 //we need a function to show us whats happening using the word on because it runs on an event
 var onSave = function(event){
     console.log(event.target)
-    //so I couldn't figure out why it wasn't pulling the value of the textarea
-    //so we looked at w3schools and they said add a .value which honestly should have been intuitive
-    //we are using backticks here hecause we want to dynamically change the id and if they click on 10, we want the id to reflect number 10
-    //inside the ${} is code that will later be evaulated to a string depending on the button clicked
-    console.log(document.querySelector(`#btn${event.target.value}`).value)
-    if(document.querySelector(`#btn${event.target.value}`).value){
-        //originally put event.target.id but then we realized we didn't have a id on the freaken button but
-        //what we did have was a value so we did .value
-        var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
-        localStorage.setItem(`${event.target.value}`, timeBlockEvent)
-        
-    }
-  
+    var btn9 = document.querySelector("#btn9")
+    console.log(btn9)
 }
 document.querySelector(".saveBtn");
 

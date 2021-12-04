@@ -47,7 +47,7 @@ var onSave = function(event){
     //we are using backticks here hecause we want to dynamically change the id and if they click on 10, we want the id to reflect number 10
     //inside the ${} is code that will later be evaulated to a string depending on the button clicked
     console.log(document.querySelector(`#btn${event.target.value}`).value)
-    if(document.querySelector(`#btn${event.target.value}`).value){
+    if(document.querySelector(`#btn${event.target.id}`).value){
         //originally put event.target.id but then we realized we didn't have a id on the freaken button but
         //what we did have was a value so we did .value
         var timeBlockEvent = document.querySelector(`#btn${event.target.value}`).value
